@@ -1,14 +1,14 @@
-from typing import NamedTuple, List
+from typing import NamedTuple, List, Optional
 
 
 class UpcomingMatch(NamedTuple):
-    date: str
-    home_team: str
-    away_team: str
-    id_home_team: int
-    id_away_team: int
-    logo_home_team: str
-    logo_away_team: str
+    date: Optional[str]
+    home_team: Optional[str]
+    away_team: Optional[str]
+    id_home_team: Optional[int]
+    id_away_team: Optional[int]
+    logo_home_team: Optional[str]
+    logo_away_team: Optional[str]
 
 
 class GetUpcomingMatchesResponse(NamedTuple):

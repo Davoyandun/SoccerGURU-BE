@@ -12,8 +12,9 @@ class GetUpcomingMatches:
     def __map_upcoming_matches(self, data: List[dict]) -> List[UpcomingMatch]:
         matches = []
         for match in data:
-            away_team_data: dict = match.get("teams")[0]
-            home_team_data: dict = match.get("teams")[1]
+            teams = match.get("teams")
+            away_team_data: dict = teams[0] if teams else {}
+            home_team_data: dict = teams[1] if teams else {}
 
             match_data = UpcomingMatch(
                 away_team=away_team_data.get("displayName"),
