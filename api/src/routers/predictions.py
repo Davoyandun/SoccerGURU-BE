@@ -1,15 +1,21 @@
-from fastapi import APIRouter
-from factories.use_cases import get_llm_prediction_use_case
+from fastapi import Depends, APIRouter, HTTPException
+
+from factories.use_cases import create_llm_prediction_use_case
+from core.src.use_cases import CreatePrediction
+from ..dtos import PredictionRequest
 
 predictions_router = APIRouter()
+OPENAI_ASSISTANT_NAME = "marketing"
 
 
-@predictions_router.get("/predictions/{team_id_1}/{team_id_2}")
-async def get_prediction(team_id_1: int, team_id_2: int):
+@predictions_router.post("/")
+async def create_prediction(
+    request: PredictionRequest,
+    use_case: CreatePrediction = Depends(create_llm_prediction_use_case),
+):
     try:
-        # Call the proper use case to get the data
-        prediction = get_llm_prediction_use_case()
+        prediction = use_case.run(request.teams_data, OPENAI_ASSISTANT_NAME)
         return prediction
 
     except Exception as e:
-        return {"error": str(e)}
+        raise HTTPException(status_code=400, detail=str(e))

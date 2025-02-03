@@ -1,2 +1,2 @@
-from .get_llm_prediction import GetLLMPrediction
+from .create_llm_prediction import CreatePrediction
 from .get_upcoming_matches import GetUpcomingMatches
