@@ -4,8 +4,6 @@ from api.src.routers import leagues_router, predictions_router
 
 app = FastAPI()
 
-app.include_router(router=predictions_router, prefix="/prediction")
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -14,8 +12,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(router=predictions_router, prefix="/prediction")
 app.include_router(leagues_router)
-app.include_router(predictions_router)
 
 @app.get("/")
 async def root():
