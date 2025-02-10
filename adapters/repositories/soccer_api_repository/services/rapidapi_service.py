@@ -1,16 +1,14 @@
-import os
 import requests
-from dotenv import load_dotenv
-
-load_dotenv()
+from config.constants import X_RAPID_API_HOST
+from config.env_variables import X_RAPID_API_KEY
 
 
 class RapidAPIService:
     def __init__(self, url: str):
         self.base_url = url
         self.headers = {
-            "x-rapidapi-key": os.getenv("RAPIDAPI_KEY"),
-            "x-rapidapi-host": os.getenv("RAPIDAPI_HOST"),
+            "x-rapidapi-key": X_RAPID_API_KEY,
+            "x-rapidapi-host": X_RAPID_API_HOST,
         }
 
     def __call__(self, endpoint: str, querystring: dict):
