@@ -7,5 +7,5 @@ class SoccerApiRepository(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def get_statistics(self, team_id_1: int, team_id_2: int):
+    def get_statistics(self, team_id_1: str, team_id_2: str):
         raise NotImplementedError

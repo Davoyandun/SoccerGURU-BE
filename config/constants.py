@@ -1,2 +1,4 @@
 X_RAPID_API_HOST = "uefa-champions-league1.p.rapidapi.com"
 UEFA_RAPID_API_URL = "https://uefa-champions-league1.p.rapidapi.com"
+STAT_TYPES = ["goals", "assists", "shotsOnTarget", "yellowCards", "redCards", "foulsCommited"]
+PREDICTION_PROMPT = "You are an expert analyst in soccer and your task is to make an accurrate prediction about which of two given teams can be the winner of a match. Considerer that you will receive some statistics from last season. The result should be a json output that have winning_team, accuracy, winning_reasons, losing_team, losing_reasons. Here are the teams with its statistics:"
